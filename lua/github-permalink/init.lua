@@ -96,7 +96,7 @@ function M.generate_permalink()
 
 	-- Copy to system clipboard
 	vim.fn.setreg('+', url)
-	vim.notify("GitHub permalink copied to clipboard!", vim.log.levels.INFO)
+	vim.notify("Permalink: " .. url, vim.log.levels.INFO)
 end
 
 -- Setup function to be called when loading the plugin
