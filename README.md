@@ -18,3 +18,11 @@ Using [lazy.nvim](https://github.com/folke/lazy.nvim):
 2. Run `:GitHubPermalink`
 3. A GitHub permalink will be copied to your clipboard in the format:
    `https://github.com/org/repo/blob/commit-hash/path/to/file#L1-L5`
+
+### Configuring a keymap
+
+```lua
+require('github-permalink').setup({})
+-- Using <C-u> clears the highlight after generating the link.
+vim.keymap.set("x", "<leader>gl", ":<C-u>GitHubPermalink<CR>", { desc = "[G]itHub Perma[L]ink"})
+```
