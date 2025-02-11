@@ -83,16 +83,20 @@ function M.generate_permalink()
 	local start_line = vim.fn.line("'<")
 	local end_line = vim.fn.line("'>")
 
-	-- Construct the GitHub URL
+	-- Construct the GitHub URL, beginning with just the first line
 	local url = string.format(
-		"https://github.com/%s/%s/blob/%s/%s#L%d-L%d",
+		"https://github.com/%s/%s/blob/%s/%s#L%d",
 		github_info.org,
 		github_info.repo,
 		commit_hash,
 		relative_path,
-		start_line,
-		end_line
+		start_line
 	)
+
+	-- Add the end_line if more than one line is selected.
+	if not start_line == end_line then
+		url = string.format("url-L%d", end_line)
+	end
 
 	-- Copy to system clipboard
 	vim.fn.setreg('+', url)
