@@ -63,7 +63,8 @@ local function get_github_info()
 	return nil
 end
 
--- Generate GitHub permalink
+--- Generate GitHub permalink
+---@return nil
 function M.generate_permalink()
 	local root = get_git_root()
 	local github_info = get_github_info()
@@ -94,7 +95,7 @@ function M.generate_permalink()
 	)
 
 	-- Add the end_line if more than one line is selected.
-	if not start_line == end_line then
+	if start_line ~= end_line then
 		url = string.format("url-L%d", end_line)
 	end
 
@@ -103,7 +104,7 @@ function M.generate_permalink()
 	vim.notify("Permalink: " .. url, vim.log.levels.INFO)
 end
 
--- Setup function to be called when loading the plugin
+--- Setup function to be called when loading the plugin
 function M.setup(opts)
 	-- Create user command
 	vim.api.nvim_create_user_command('GitHubPermalink', function()
@@ -123,4 +124,3 @@ function M.setup(opts)
 end
 
 return M
-
