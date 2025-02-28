@@ -96,7 +96,7 @@ function M.generate_permalink()
 
 	-- Add the end_line if more than one line is selected.
 	if start_line ~= end_line then
-		url = string.format("url-L%d", end_line)
+		url = string.format("%s-L%d", url, end_line)
 	end
 
 	-- Copy to system clipboard
